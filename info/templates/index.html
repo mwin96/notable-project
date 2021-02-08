@@ -1,0 +1,47 @@
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Notable Project</title>
+  <meta name="description" content="Notable Project">
+   {% block css %}
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.1/css/materialize.min.css" integrity="sha256-qj3p6P1fJIV+Ndv7RW1ovZI2UhOuboj9GcODzcNFIN8=" crossorigin="anonymous" />
+      <link rel="stylesheet" href="{% static 'css/style.css' %}" />   
+    {% endblock css %}
+
+</head>
+
+<body>
+    <div class="container">
+        <h2 id = 'logoColor'> notable  </h1>
+
+        {% block content %}
+
+           <div>
+                <table class="table">
+                    <tr id = 'headers'>
+                        <th>Physician</th>
+                        <th>Patient</th>
+                        <th>Time</th>
+                        <th>Kind</th>
+                    </tr id = 'headers'>
+                    {% for item in query_results %}
+                        <tr>
+                            <td id = 'doctor'> {{ item.doctor}}</td>
+                             <td> {{ item.name}}</td>
+                              <td> {{ item.time}}</td>
+                               <td> {{ item.kind}}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div> 
+        {% endblock %}
+        <a class="btn btn-primary light-blue" href="/patients">Patients API</a>
+        <a class="btn btn-primary light-blue" href="/physicians">Physician API</a>
+    </div>
+
+</body>
+    <script src="{% static 'js/info.js' %}"></script>
+</html>
